@@ -1,0 +1,199 @@
+/*Otetaan käyttöön kaikkiin valitsimiin box-sizing -tekniikka joka pitää sisällään elementin leveyden + padding + border -arvot. Margin:0; - ei jätä oletustilaa laitteen reunoille. Testaa pienistä suuriin päätelaitteisiin esim. emulaattorilla. */
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Handlee', cursive;
+  margin: 0;
+  padding: 5px;
+}
+
+/* kokeilin fonttilaskuria https://css-tricks.com/snippets/css/fluid-typography/ responsiivisten fonttikokojen skaalaukseen*/
+h1 {
+  font-size: calc(24px + (65 - 24) * ((100vw - 300px) / (1400 - 300)));
+}
+
+h2 {
+  font-size: calc(14px + (40 - 14) * ((100vw - 300px) / (1400 - 300)));
+  background-color: #F29727;
+}
+
+h3 {
+  background-color: #D99D55;
+  font-size: calc(14px + (40 - 14) * ((100vw - 300px) / (1400 - 300)));
+}
+
+hr {
+  margin-bottom: 10px;
+}
+
+.col-4 {
+  font-size: 2vmax;
+}
+
+p {
+  font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1400 - 300)));
+  margin-top: 5px;
+  line-height: 1.5;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  margin: 10px 0;
+}
+
+/* layout */
+/* navigaatio */
+.header {
+  overflow: auto;
+  background-color: #F2CB57;
+  padding: 15px;
+}
+
+i {
+  float: right;
+  margin-left: 5px;
+}
+
+.header h1 {
+  float: left;
+}
+
+/*Kaikki class -valitsimet jotka sisältää merkit col-*/
+[class*="col-"] {
+  width: 100%;
+  height: auto;
+  float: left;
+  padding: 15px;
+  text-align: justify;
+}
+
+.col-4 {
+  background-color: #F2CB57;
+  text-align: center;
+  padding: 15px;
+}
+
+/* responsiivinen video, iframe */
+
+.video {
+  overflow: hidden;
+  /* 16:9 aspect ratio */
+  padding-top: 56.25%;
+  position: relative;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.video iframe {
+  border: 0;
+  height: 100%;
+  left: 0;
+  right: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+/* Piilotetaan pitkä otsikko mobiilinäkymässä */
+@media only screen and (max-width: 480px) {
+  .header .pitka {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 800px) {
+  .header .lyhyt {
+    display: none;
+  }
+
+  /* sarakkeen leveys prosentteina 380px / 800px */
+  .left {
+    width: 47.5%;
+    margin-right:1.04166666666667%;
+    margin-left: 1.04166666666667%;
+  }
+  .right {
+    width: 47.5%;
+    margin-right: 1.04166666666667%;
+    margin-left: 1.04166666666667%;
+  } 
+}
+
+@media only screen and (min-width: 801px) {
+  .header .lyhyt {
+    display: none;
+  }
+
+  /* sarakkeen leveys prosentteina 321,3px / 1024px */
+  .left {
+    width: 31.38020833333333%;
+    margin-right: 0.9765625%;
+    margin-left: 0.9765625%;
+  }
+  .right {
+    width: 31.38020833333333%;
+    margin-right:0.9765625%;
+    margin-left: 0.9765625%;
+  }
+
+  .col-3 {
+    width: 31.38020833333333%;
+    margin-right:0.9765625%;
+    margin-left: 0.9765625%;
+  }
+
+/* keskitetään otsikot */
+  h2, h3 {
+    text-align: center;
+  }
+
+/* lisätään väljyyttä */
+  .header {
+    margin-bottom: 15px;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+
+  /* jätetään reunoille enemmän tilaa */
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 1401px) {
+
+  /* asetetaan maksimikoko fonteille */
+  h1 {
+    font-size: 65px;
+  }
+
+  h2 {
+    font-size: 40px;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 40px;
+    text-align: center;
+  }
+
+  p {
+    font-size: 18px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .col-4 {
+    font-size: 20px;
+  }
+}
